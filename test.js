@@ -1,5 +1,5 @@
 
-var index = require('./index');
+var index = require('./index').getMetadata;
 
 var path = require('path');
 var fs = require('fs');

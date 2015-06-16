@@ -1,33 +1,40 @@
 
-module.exports = function(file) {
+var JSParser = require('./JSParser')
+
+function parseFirstFunction(file) {
 
     var esprima = require('esprima');
 
     var tree = esprima.parse(file, { attachComment: true });
 
-    return rootParser(tree.body[0]);
+    var parser = new JSParser(tree);
+
+    return parser.parseFirst();
 };
 
-function rootParser (body) {
-    var classComments = body.id ? body.id.leadingComments : [];
-    var innerDeclarations = body.body && body.body.body ? body.body.body : [];
+function getMetadata(file) {
 
-    var innerComments = innerDeclarations.map(bodyParser).filter(function(commentHolder) {
-        return commentHolder.comment.length && commentHolder.name;
-    });
+    var parsedClass = parseFirstFunction(file);
 
     return {
-        classComments : classComments,
-        innerComments : innerComments
+        name : parsedClass.class.name,
+        annotations : parsedClass.class.comments.map(parseAnnotation.bind(this, parsedClass.class.name)),
+        methods : parsedClass.properties.map(function(property) {
+            return {
+                name : property.name,
+                annotations : property.comments.map(parseAnnotation.bind(this, property.name))
+            };
+        })
+    };
+};
+
+function parseAnnotation(itemName, comment) {
+    return {
+        target : itemName,
+        name : comment.value.replace('@', '')
     }
 }
 
-function bodyParser (body) {
-    var left = body.expression ? body.expression.left : {};
-    var propertyComment = left.leadingComments || [];
-    var propertyName = left.property ? left.property.name : '';
-    return {
-        comment : propertyComment,
-        name : propertyName
-    };
-}
+module.exports.getMetadata = getMetadata;
+
+module.exports.parseFirstFunction = parseFirstFunction;

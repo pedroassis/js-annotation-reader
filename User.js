@@ -7,7 +7,7 @@ function User(){
     };
 
     //@Test
-    var a = function() {};
+    this.a = '';
 
     // @BeforeLoadContaine
     this.get = function() {
