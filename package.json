@@ -1,0 +1,22 @@
+{
+  "name": "js-annotation-reader",
+  "version": "0.0.1",
+  "description": "JS Annotation Reader",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pedroassis/js-annotation-reader.git"
+  },
+  "author": "Pedro Assis <pedro@pedroassis.com.br> (https://github.com/pedroassis)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pedroassis/js-annotation-reader/issues"
+  },
+  "homepage": "https://github.com/pedroassis/js-annotation-reader",
+  "dependencies": {
+    "esprima": "^2.2.0"
+  }
+}
