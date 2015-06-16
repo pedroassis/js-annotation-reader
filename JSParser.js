@@ -16,7 +16,7 @@ function JSParser (tree) {
         var toParse = body.body || [];
         for (var i = toParse.length - 1; i >= 0; i--) {
             var innerItem = toParse[i];
-            lookup[innerItem.type](innerItem);
+            lookup[innerItem.type] && lookup[innerItem.type](innerItem);
         };
     };
 
@@ -28,13 +28,13 @@ function JSParser (tree) {
             comments : functionComments,
             name : functionName
         }
-        lookup[innerBlock.type](innerBlock);
+        lookup[innerBlock.type] && lookup[innerBlock.type](innerBlock);
     };
 
     lookup['BlockStatement'] = lookup['Program'];
 
     lookup['ExpressionStatement'] = function(block) {
-        lookup[block.expression.type](block.expression);
+        lookup[block.expression.type] && lookup[block.expression.type](block.expression);
         if(block.leadingComments && block.expression.left && block.expression.left.property && block.expression.left.property.name){
             extractedComments.properties.push({
                 comments : block.leadingComments,
