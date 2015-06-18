@@ -1,16 +1,19 @@
-//@BeforeLoadContainer
-//@BeforeLoadCon
+/// @BeforeLoadContainer
+'@AnnotationClass';
+/// @BeforeLoadCon
 function User(){
 
-    this.put = function() {
+    '@AnnotationMethod';
+    this.put = function put() {
 
     };
 
-    //@Test
+    /// @Test
+    '@AnnotationField';
     this.a = '';
 
-    // @BeforeLoadContaine
-    this.get = function() {
+    /// @BeforeLoadContaine
+    '@AnnotationMethod';    this.get = function() {
 
     };
 }

@@ -1,11 +1,14 @@
 
 var JSParser = require('./JSParser')
+var esprima = require('esprima');
+
+var fs = require('fs');
 
 function parseFirstFunction(file) {
 
-    var esprima = require('esprima');
-
     var tree = esprima.parse(file, { attachComment: true });
+
+    console.log(JSON.stringify(tree, null, 4));
 
     var parser = new JSParser(tree);
 

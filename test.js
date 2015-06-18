@@ -9,4 +9,5 @@ var name = path.join(__dirname, 'User.js');
 
 var code = fs.readFileSync(name).toString();
 
-console.log(JSON.stringify(index(code), null, 4))
+index(code)
+// console.log(JSON.stringify(index(code), null, 4))
