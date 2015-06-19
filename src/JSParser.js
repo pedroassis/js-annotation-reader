@@ -17,7 +17,7 @@ function JSParser (tree) {
         for (var i = 0; i < toParse.length; i++) {
             var innerItem = toParse[i];
             lookup[innerItem.type] && lookup[innerItem.type](innerItem, transverse);
-        };
+        }
     };
 
     lookup['ExpressionStatement'] = function(block) {

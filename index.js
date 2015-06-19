@@ -1,14 +1,15 @@
 
-var JSParser = require('./JSParser')
+var JSParser = require('./src/JSParser')
+var AnnotationParserClass = require('./src/AnnotationParser')
 var esprima = require('esprima');
 
 var fs = require('fs');
 
+var AnnotationParser = new AnnotationParserClass();
+
 function parseFirstFunction(file) {
 
-    var tree = esprima.parse(file, { attachComment: true });
-
-    // console.log(JSON.stringify(tree, null, 4));
+    var tree = esprima.parse(file);
 
     var parser = new JSParser(tree);
 
@@ -34,7 +35,7 @@ function getMetadata(file) {
 function parseAnnotation(itemName, metadata) {
     return {
         target : itemName,
-        name : metadata.name.replace('@', '')
+        name : AnnotationParser.parse(metadata.name.replace(/@/g, ''))
     }
 }
 

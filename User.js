@@ -1,11 +1,11 @@
 
-'@AnnotationClass'
-'@AnotherAnnotationClass'
+'@AnnotationClass(s=234565432)'
+'@AnotherAnnotationClass()'
 function User(){
 
-    '@AnnotationMethod'
-    '@AnnotationMethod2put'
-    '@AnotherAnnotationMethod'
+    '@AnnotationMethod({s:234567})'
+    '@AnnotationMethod2put("")'
+    '@AnotherAnnotationMethod(1,5,6)'
     this.put = function put() {
 
         function innerInner (argument) {
@@ -15,7 +15,7 @@ function User(){
     function inner (argument) {
     }
 
-    '@AnnotationField';'@AnotherAnnotationField'
+    '@AnnotationField(@AnotherAnnotationField)'
     this.a = '';
 
     '@AnnotationMethod';'@AnotherAnnotationMethodGet'    
