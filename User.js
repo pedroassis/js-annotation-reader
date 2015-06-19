@@ -1,19 +1,25 @@
-/// @BeforeLoadContainer
-'@AnnotationClass';
-/// @BeforeLoadCon
+
+'@AnnotationClass'
+'@AnotherAnnotationClass'
 function User(){
 
-    '@AnnotationMethod';
+    '@AnnotationMethod'
+    '@AnnotationMethod2put'
+    '@AnotherAnnotationMethod'
     this.put = function put() {
 
+        function innerInner (argument) {
+        }
     };
 
-    /// @Test
-    '@AnnotationField';
+    function inner (argument) {
+    }
+
+    '@AnnotationField';'@AnotherAnnotationField'
     this.a = '';
 
-    /// @BeforeLoadContaine
-    '@AnnotationMethod';    this.get = function() {
+    '@AnnotationMethod';'@AnotherAnnotationMethodGet'    
+    this.get = function() {
 
     };
 }

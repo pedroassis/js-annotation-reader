@@ -8,7 +8,7 @@ function parseFirstFunction(file) {
 
     var tree = esprima.parse(file, { attachComment: true });
 
-    console.log(JSON.stringify(tree, null, 4));
+    // console.log(JSON.stringify(tree, null, 4));
 
     var parser = new JSParser(tree);
 
@@ -17,24 +17,24 @@ function parseFirstFunction(file) {
 
 function getMetadata(file) {
 
-    var parsedClass = parseFirstFunction(file);
+    var classMetadata = parseFirstFunction(file);
 
     return {
-        name : parsedClass.class.name,
-        annotations : parsedClass.class.comments.map(parseAnnotation.bind(this, parsedClass.class.name)),
-        methods : parsedClass.properties.map(function(property) {
+        name : classMetadata.name,
+        annotations : classMetadata.metadata.map(parseAnnotation.bind(this, classMetadata.name)),
+        methods : classMetadata.methods.map(function(property) {
             return {
                 name : property.name,
-                annotations : property.comments.map(parseAnnotation.bind(this, property.name))
+                annotations : property.metadata.map(parseAnnotation.bind(this, property.name))
             };
         })
     };
 };
 
-function parseAnnotation(itemName, comment) {
+function parseAnnotation(itemName, metadata) {
     return {
         target : itemName,
-        name : comment.value.replace('@', '')
+        name : metadata.name.replace('@', '')
     }
 }
 
