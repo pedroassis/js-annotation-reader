@@ -33,10 +33,9 @@ function getMetadata(file) {
 };
 
 function parseAnnotation(itemName, metadata) {
-    return {
-        target : itemName,
-        name : AnnotationParser.parse(metadata.name.replace(/@/g, ''))
-    }
+    var annotation = AnnotationParser.parse(metadata.name.replace(/@/g, ''));
+    annotation.targets = itemName;
+    return annotation;
 }
 
 module.exports.getMetadata = getMetadata;
