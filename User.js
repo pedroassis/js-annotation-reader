@@ -1,9 +1,9 @@
-'import com.pedroassis.test';
+'import com.pedroassis.asdfgbh';
 
-    '@AnnotationMethod2put("")'
+'@AnnotationMethod2put("")'
 '@AnnotationClass(s=234565432)'
 '@AnotherAnnotationClass()'
-function User(asdcvb,asdfgbh){
+function User(asdcvb, asdfgbh){
 
     '@AnnotationMethod({s:234567})'
     '@AnotherAnnotationMethod(1,5,6)'

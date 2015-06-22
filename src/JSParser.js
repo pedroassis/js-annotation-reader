@@ -1,3 +1,4 @@
+"use strict";
 
 var ClassMetadata = require('./ClassMetadata');
 
@@ -35,8 +36,8 @@ function JSParser (tree) {
             var functionName = body.id && body.id.name ? body.id.name : '';
             var innerBlock = body.body || {};
         
-            classMetadata.addName(functionName);
             classMetadata.addParameters(body.params);
+            classMetadata.addName(functionName);
             
             lookup[innerBlock.type] && lookup[innerBlock.type](innerBlock);
         }
