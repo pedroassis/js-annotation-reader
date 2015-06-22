@@ -1,11 +1,8 @@
 
 var JSParser = require('./src/JSParser')
-var AnnotationParserClass = require('./src/AnnotationParser')
 var esprima = require('esprima');
 
 var fs = require('fs');
-
-var AnnotationParser = new AnnotationParserClass();
 
 function parseFirstFunction(file) {
 
@@ -18,25 +15,8 @@ function parseFirstFunction(file) {
 
 function getMetadata(file) {
 
-    var classMetadata = parseFirstFunction(file);
-
-    return {
-        name : classMetadata.name,
-        annotations : classMetadata.metadata.map(parseAnnotation.bind(this, classMetadata.name)),
-        methods : classMetadata.methods.map(function(property) {
-            return {
-                name : property.name,
-                annotations : property.metadata.map(parseAnnotation.bind(this, property.name))
-            };
-        })
-    };
+    return parseFirstFunction(file)
 };
-
-function parseAnnotation(itemName, metadata) {
-    var annotation = AnnotationParser.parse(metadata.name.replace(/@/g, ''));
-    annotation.targets = itemName;
-    return annotation;
-}
 
 module.exports.getMetadata = getMetadata;
 

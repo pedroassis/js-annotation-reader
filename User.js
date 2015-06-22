@@ -1,10 +1,11 @@
+'import com.pedroassis.test';
 
+    '@AnnotationMethod2put("")'
 '@AnnotationClass(s=234565432)'
 '@AnotherAnnotationClass()'
-function User(){
+function User(asdcvb,asdfgbh){
 
     '@AnnotationMethod({s:234567})'
-    '@AnnotationMethod2put("")'
     '@AnotherAnnotationMethod(1,5,6)'
     this.put = function put() {
 

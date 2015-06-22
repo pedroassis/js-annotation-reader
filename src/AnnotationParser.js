@@ -24,7 +24,7 @@ function AnnotationParser () {
             annotation.value = call(expression.arguments[0], annotation);
         }
 
-        if(expression.arguments.length > 0){
+        if(expression.arguments.length > 1){
             for (var i = expression.arguments.length - 1; i >= 0; i--) {
                 var argument = expression.arguments[i];
                 var value = call(argument, annotation);

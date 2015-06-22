@@ -36,6 +36,8 @@ function JSParser (tree) {
             var innerBlock = body.body || {};
         
             classMetadata.addName(functionName);
+            classMetadata.addParameters(body.params);
+            
             lookup[innerBlock.type] && lookup[innerBlock.type](innerBlock);
         }
     };
