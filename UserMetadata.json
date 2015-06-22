@@ -1,0 +1,77 @@
+{
+    "annotations": [
+        {
+            "name": "AnnotationMethod2put",
+            "value": "",
+            "targets": "User"
+        },
+        {
+            "name": "AnnotationClass",
+            "s": 234565432,
+            "targets": "User"
+        },
+        {
+            "name": "AnotherAnnotationClass",
+            "packaged": "com.pedroassis.AnotherAnnotationClass",
+            "targets": "User"
+        }
+    ],
+    "imports": [
+        "com.pedroassis.asdfgbh",
+        "com.pedroassis.AnotherAnnotationClass",
+        "com.pedroassis.AnotherAnnotationField"
+    ],
+    "methods": [
+        {
+            "annotations": [
+                {
+                    "name": "AnnotationMethod",
+                    "value": {
+                        "s": 234567,
+                        "packaged": false
+                    },
+                    "targets": "put"
+                },
+                {
+                    "name": "AnotherAnnotationMethod",
+                    "value": [
+                        6,
+                        5,
+                        1
+                    ],
+                    "targets": "put"
+                }
+            ],
+            "name": "put"
+        },
+        {
+            "annotations": [
+                {
+                    "name": "AnnotationMethod",
+                    "targets": "get"
+                },
+                {
+                    "name": "AnotherAnnotationMethodGet",
+                    "targets": "get"
+                },
+                {
+                    "name": "Get",
+                    "value": {
+                        "name": "Whatever",
+                        "value": [
+                            1
+                        ]
+                    },
+                    "targets": "get"
+                }
+            ],
+            "name": "get"
+        }
+    ],
+    "packaged": "package com.pedroassis.whatever",
+    "parameters": [
+        "asdcvb",
+        "com.pedroassis.asdfgbh"
+    ],
+    "name": "User"
+}

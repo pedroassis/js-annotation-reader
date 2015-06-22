@@ -1,16 +1,17 @@
-'import com.pedroassis.asdfgbh';
+'package com.pedroassis.whatever'
+  
+'import com.pedroassis.asdfgbh'; 
 'import com.pedroassis.AnotherAnnotationClass';
 'import com.pedroassis.AnotherAnnotationField';
 
-'@AnnotationMethod2put("")'
-'@AnnotationClass(s=234565432)'
+'@AnnotationMethod2put("")' 
+'@AnnotationClass(s=234565432)' 
 '@AnotherAnnotationClass()'
 function User(asdcvb, asdfgbh){
 
-    '@AnnotationMethod({s:234567})'
-    '@AnotherAnnotationMethod(1,5,6)'
+    '@AnnotationMethod({s:234567})' 
+    '@AnotherAnnotationMethod(1,5,6)'; 
     this.put = function put() {
-
         function innerInner (argument) {
         }
     };
@@ -18,10 +19,9 @@ function User(asdcvb, asdfgbh){
     function inner (argument) {
     }
 
-    '@AnnotationField(@AnotherAnnotationField)'
-    this.a = '';
-
-    '@AnnotationMethod';'@AnotherAnnotationMethodGet'    
+    '@AnnotationMethod';
+    '@AnotherAnnotationMethodGet'
+    '@Get(@Whatever([1]))'
     this.get = function() {
 
     };

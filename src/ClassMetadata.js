@@ -7,7 +7,7 @@ var AnnotationParser = new AnnotationParserClass();
 var Annotation = require('./Annotation')
 
 var IMPORT_STATEMENT = "import ";
-var PACKAGE_STATEMENT = "import ";
+var PACKAGE_STATEMENT = "package ";
 var USE_STRICT = "use strict";
 
 function ClassMetadata() {
