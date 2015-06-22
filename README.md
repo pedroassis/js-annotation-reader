@@ -21,7 +21,7 @@ But without this metadata your code would also run, a little different.
 
 I'm talking of course of 'use strict' literal expression.
 
-Use strict is not part of your code, although is it code, much like an Annotation mind you.
+Use strict is not part of your code, although is it code, much like an Annotation mind you.  
 [Reference Link](http://stackoverflow.com/a/17560270/1727493)
 
 
@@ -110,7 +110,7 @@ Things can get fancy here, checkout our User.js file:
   }
 ```
 
-Thats a lot of metadata, checkout our UserMetadata.json to see the output, or just scroll as you will, nothing to see.
+Thats a lot of metadata, checkout our UserMetadata.json to see the output, or just scroll as you will, nothing else to see.
 
 ```js
   {
@@ -186,7 +186,7 @@ Thats a lot of metadata, checkout our UserMetadata.json to see the output, or ju
       "packaged": "package com.pedroassis.whatever",
       "parameters": [
           "asdcvb",
-          "com.pedroassis.asdfgbh"
+          "com.pedroassis.asdfgbh" // <-- matched the import
       ],
       "name": "User"
   }
