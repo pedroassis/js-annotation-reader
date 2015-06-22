@@ -1,4 +1,6 @@
 'import com.pedroassis.asdfgbh';
+'import com.pedroassis.AnotherAnnotationClass';
+'import com.pedroassis.AnotherAnnotationField';
 
 '@AnnotationMethod2put("")'
 '@AnnotationClass(s=234565432)'

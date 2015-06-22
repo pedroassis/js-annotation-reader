@@ -4,6 +4,8 @@ var AnnotationParserClass = require('./AnnotationParser')
 
 var AnnotationParser = new AnnotationParserClass();
 
+var Annotation = require('./Annotation')
+
 var IMPORT_STATEMENT = "import ";
 var PACKAGE_STATEMENT = "import ";
 var USE_STRICT = "use strict";
@@ -17,6 +19,8 @@ function ClassMetadata() {
     this.methods = [];
 
     var current = this;
+
+    var that = this;
 
     this.addMetadata = function(metadata) {
 
@@ -37,14 +41,14 @@ function ClassMetadata() {
     };
 
     function getParameterName(param) {
-        return current.imports && getImportStatement(param.name) || param.name;
+        return that.imports && getImportStatement(param.name) || param.name;
     }
 
     function getImportStatement(name) {
         var importStatement;
         var dotName = '.' + name;
-        for (var i = current.imports.length - 1; i >= 0; i--) {
-            var imported = current.imports[i];
+        for (var i = that.imports.length - 1; i >= 0; i--) {
+            var imported = that.imports[i];
             var endsWith = imported.indexOf(dotName, imported.length - dotName.length) !== -1
             importStatement = !importStatement && endsWith ? imported : importStatement;
         }
@@ -70,12 +74,19 @@ function ClassMetadata() {
     }
 
     function addAnnotation(metadata) {
-        current.annotations.push(AnnotationParser.parse(metadata.replace(/@/g, '')));
+        var annotation = AnnotationParser.parse(metadata.replace(/@/g, ''));
+        fillPackage(annotation);
+        current.annotations.push(annotation);
     }
 
+    function fillPackage(annotation) {
+        annotation.packaged = that.imports && annotation instanceof Annotation && getImportStatement(annotation.name);
+        annotation.value && fillPackage(annotation.value);
+    };
+
     function addImport(metadata) {
-        current.imports = current.imports || [];
-        current.imports.push(metadata.trim().replace(IMPORT_STATEMENT, ""));
+        that.imports = that.imports || [];
+        that.imports.push(metadata.trim().replace(IMPORT_STATEMENT, ""));
     }
 
     function addPackage(metadata) {

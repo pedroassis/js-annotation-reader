@@ -2,6 +2,9 @@
 
 var esprima = require('esprima');
 
+var Annotation = require('./Annotation')
+
+
 function AnnotationParser () {
         
     this.parse = function parser (rawAnnotation) {
@@ -17,9 +20,7 @@ function AnnotationParser () {
 
     // New annotation
     lookup['CallExpression'] = function(expression) {
-        var annotation = {
-            name : expression.callee.name
-        };
+        var annotation = new Annotation(expression.callee.name);
 
         if(expression.arguments.length === 1){
             annotation.value = call(expression.arguments[0], annotation);
@@ -59,9 +60,7 @@ function AnnotationParser () {
     };
 
     lookup['Identifier'] = function(identifier) {
-        return {
-            name : identifier.name
-        };
+        return new Annotation(identifier.name);
     };
 
     lookup['ArrayExpression'] = function(arrayExpression) {
