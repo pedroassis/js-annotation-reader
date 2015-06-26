@@ -48,6 +48,8 @@ function JSParser (tree) {
     lookup['AssignmentExpression'] = function(assignmentExpression) {
         if(assignmentExpression.left.property.name && assignmentExpression.left.object.type === "ThisExpression"){
             var name = assignmentExpression.left.property.name;
+            var params = assignmentExpression.right.params;
+            classMetadata.addParameters(params);
             classMetadata.addName(name);
         }
     };

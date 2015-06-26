@@ -5,7 +5,7 @@ var path = require('path');
 var fs = require('fs');
 var esprima = require('esprima');
 
-var name = path.join(__dirname, 'User.js');
+var name = path.join(__dirname, 'Simple.js');
 
 var code = fs.readFileSync(name).toString();
 

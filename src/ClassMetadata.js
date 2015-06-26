@@ -46,9 +46,11 @@ function ClassMetadata() {
 
     function getImportStatement(name) {
         var importStatement;
-        var dotName = '.' + name;
         for (var i = that.imports.length - 1; i >= 0; i--) {
             var imported = that.imports[i];
+            var prefix = imported.indexOf('.') !== -1 ? '.' : ' ';
+            var dotName = prefix + name; 
+
             var endsWith = imported.indexOf(dotName, imported.length - dotName.length) !== -1
             importStatement = !importStatement && endsWith ? imported : importStatement;
         }
@@ -89,12 +91,12 @@ function ClassMetadata() {
         that.imports.push(metadata.trim().replace(IMPORT_STATEMENT, ""));
     }
 
-    function addPackage(metadata) {
-        current.packaged = metadata.trim().replace(IMPORT_STATEMENT, "");
-    }
-
     function isImport(rawMetadata) {
         return rawMetadata && rawMetadata.trim().indexOf(IMPORT_STATEMENT) === 0;
+    }
+
+    function addPackage(metadata) {
+        current.packaged = metadata.trim().replace(PACKAGE_STATEMENT, "");
     }
 
     function isPackage(rawMetadata) {
