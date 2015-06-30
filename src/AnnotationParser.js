@@ -2,14 +2,26 @@
 
 var esprima = require('esprima');
 
-var Annotation = require('./Annotation')
-
+var Annotation = require('./Annotation');
 
 function AnnotationParser () {
         
     this.parse = function parser (rawAnnotation) {
-        var tree = esprima.parse(rawAnnotation);
-        return call(tree.body[0]);
+        var tree;
+        var annotation;
+        var error;
+        try {
+            tree = esprima.parse(rawAnnotation);
+            var body = tree.body[0];
+            annotation = call(body);
+        } catch(e){
+            error = true;
+        }
+
+        if(body.expression.type !== "CallExpression" && body.expression.type !== "Identifier" || error){
+            throw new Error("Invalid Annotation '" + rawAnnotation + "'. Please verify the input");
+        }
+        return annotation;
     }
 
     var lookup = {};

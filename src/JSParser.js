@@ -46,7 +46,9 @@ function JSParser (tree) {
     lookup['BlockStatement'] = lookup['Program'];
 
     lookup['AssignmentExpression'] = function(assignmentExpression) {
-        if(assignmentExpression.left.property.name && assignmentExpression.left.object.type === "ThisExpression"){
+        if(assignmentExpression.left.property.name 
+            && assignmentExpression.left.object.type === "ThisExpression"
+            && assignmentExpression.right.type === 'FunctionExpression'){
             var name = assignmentExpression.left.property.name;
             var params = assignmentExpression.right.params;
             classMetadata.addParameters(params);
