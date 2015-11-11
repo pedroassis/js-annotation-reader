@@ -1,4 +1,3 @@
-"use strict";
 
 var AnnotationParserClass = require('./AnnotationParser')
 

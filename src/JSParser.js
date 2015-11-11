@@ -1,4 +1,3 @@
-"use strict";
 
 var ClassMetadata = require('./ClassMetadata');
 

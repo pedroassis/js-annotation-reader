@@ -1,4 +1,3 @@
-"use strict";
 
 var esprima = require('esprima');
 
